@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TALENT HUB — Tournament App</title>
+  <meta name="description" content="Download TALENT HUB — esports tournament manager & community app" />
+  <style>
+    .mock-ui-preview {
+      background-color: #0a0f1c;
+      /* dark background */
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 420px; /* fixed preview height inside phone */
+      overflow: hidden;
+    }
+
+    .mock-ui-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      transition: opacity 0.45s ease;
+      opacity: 1;
+    }
+
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --muted: #98a1b3;
+      --accent: #ff3b6b;
+      --glass: rgba(255, 255, 255, 0.04);
+      --radius: 14px;
+      --maxw: 1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #040511 0%, #081026 60%);
+      color: #e6eef8
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 40px auto;
+      padding: 28px
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: conic-gradient(from 120deg, #ff3b6b, #7b61ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px
+    }
+
+    p.lead {
+      margin: 6px 0 0;
+      color: var(--muted)
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      margin-top: 22px;
+      align-items: center
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6)
+    }
+
+    .apk-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--accent), #7b61ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 14px
+    }
+
+    .alt-btn {
+      background: var(--glass);
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      display: inline-block
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 14px;
+      flex-wrap: wrap
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px 12px;
+      border-radius: 10px
+    }
+
+    .phone {
+      width: 360px;
+      height: 720px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #0e1626, #051428);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .screen {
+      width: 320px;
+      height: 640px;
+      background: linear-gradient(180deg, #071226, #0b1a2a);
+      border-radius: 18px;
+      box-shadow: inset 0 -60px 80px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      color: #e6eef8;
+    }
+
+    .screen .title {
+      padding: 12px 16px 6px 16px;
+    }
+
+    .screen .title h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .screen .title p {
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px
+    }
+
+    .feature {
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02)
+    }
+
+    .feature strong {
+      color: white
+    }
+
+    .feature p {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    footer {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center
+    }
+
+    @media (max-width:960px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .phone {
+        display: none
+      }
+
+      .grid3 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (max-width:560px) {
+      .grid3 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .pulse {
+      animation: pulse 2.6s infinite
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
+
+      100% {
+        transform: translateY(0)
+      }
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-weight: 600
+    }
+
+    .faq {
+      margin-top: 20px
+    }
+
+    .q {
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      margin-bottom: 8px
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">TH</div>
+        <div>
+          <h1>TALENT HUB</h1>
+          <p class="lead">Esports tournament manager — brackets, matches, rewards & community</p>
+        </div>
+      </div>
+      <nav>
+        <a class="alt-btn" href="#features">Features</a>
+        <a class="alt-btn" href="#download">Download</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <div class="badge">Official Download</div>
+          <h2 style="margin-top:12px">Get the TALENT HUB app</h2>
+          <p class="small">Manage and participate in CS 4v4 tournaments, track leaderboards, and join
+            communities — all in one app.</p>
+
+          <div id="download">
+            <a id="apkDownload" class="apk-btn" href="https://www.upload-apk.com/tMRpXevbIM1Uz2c" target="_blank">
+              ⬇️ Download APK (TALENT_HUB_By_KAVY_GamerZ.apk)
+            </a>
+            <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+              <a id="copyLink" class="alt-btn" href="#">Copy Link</a>
+              <a id="mirror" class="alt-btn" href="#">Mirror</a>
+            </div>
+          </div>
+
+          <div class="meta">
+            <div class="stat">Ratings ★ 4.6</div>
+            <div class="stat">Size 18MB</div>
+            <div class="stat" id="dlCount">Downloads 0</div>
+          </div>
+        </div>
+
+        <div id="features" class="grid3">
+          <div class="feature card">
+            <strong>Profile</strong>
+            <p>Sign up and make your own profile.</p>
+          </div>
+          <div class="feature card">
+            <strong>Main Page</strong>
+            <p>Invite players, match results in real-time.</p>
+          </div>
+          <div class="feature card">
+            <strong>Wallet</strong>
+            <p>Easy withdrawals and add payment methods.</p>
+          </div>
+        </div>
+
+        <section class="faq">
+          <div class="q"><strong>Is the APK safe?</strong>
+            <div class="small">Yes — always download from trusted links like this one.</div>
+          </div>
+          <div class="q"><strong>How to install?</strong>
+            <div class="small">Enable app installs from unknown sources on your Android device and tap the
+              downloaded file.</div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="phone card pulse">
+        <div class="screen" id="screenArea"></div>
+      </aside>
+    </section>
+
+    <footer>
+      <div class="small">Made with ❤️ for gamers — TALENT HUB • © <span id="year"></span></div>
+    </footer>
+  </div>
+
+  <script>
+    // ------------- configuration: image URLs (public) ----------------
+    // I used the same public i.ibb.co links that you had in the page earlier.
+    const images = [
+      "https://i.ibb.co/1GKcH9ny/Whats-App-Image-2025-08-08-at-21-29-37-5a745133.jpg",
+      "https://i.ibb.co/mV1sQDMP/Whats-App-Image-2025-08-08-at-21-29-38-4e4928cc.jpg",
+      "https://i.ibb.co/C5QyKg4b/Whats-App-Image-2025-08-08-at-21-29-38-cb80fba8.jpg",
+      "https://i.ibb.co/q8H3Kxy/Whats-App-Image-2025-08-08-at-21-29-39-9b6844ec.jpg"
+    ];
+
+    // text cards (title + subtitle) that rotate in sync with images
+    const cards = [
+      { title: 'Home', subtitle: 'Tournaments & Live' },
+      { title: 'Bracket', subtitle: 'Round 2 — Team A vs Team B' },
+      { title: 'Team', subtitle: 'Roster & Chat' },
+      { title: 'Profile', subtitle: 'Stats & Rewards' }
+    ];
+
+    // preload images for smoother switching
+    images.forEach(u => {
+      const im = new Image();
+      im.src = u;
+    });
+
+    // create the inner markup inside the phone screen once
+    const screen = document.getElementById('screenArea');
+    screen.innerHTML = `
+      <div class="title">
+        <h3 id="screenTitle"></h3>
+        <p id="screenSub" style="margin-top:6px;color:var(--muted);font-size:12px"></p>
+      </div>
+      <div style="padding:12px;">
+        <div class="mock-ui-preview">
+          <img id="previewImage" src="${images[0]}" alt="preview">
+        </div>
+      </div>
+    `;
+
+    // rotation logic: rotate both text + image in sync
+    let idx = 0;
+    const previewImage = document.getElementById('previewImage');
+    const screenTitle = document.getElementById('screenTitle');
+    const screenSub = document.getElementById('screenSub');
+
+    function updateScreen(i) {
+      // fade out
+      previewImage.style.opacity = 0;
+      // update text immediately
+      screenTitle.textContent = cards[i].title;
+      screenSub.textContent = cards[i].subtitle;
+      // after fade-out, swap src and fade in when loaded
+      setTimeout(() => {
+        previewImage.src = images[i];
+        previewImage.onload = () => {
+          // small timeout to ensure smoothness
+          setTimeout(() => previewImage.style.opacity = 1, 40);
+        };
+      }, 300); // matches CSS transition time
+    }
+
+    // initialize
+    updateScreen(0);
+
+    // interval (2.6s as before)
+    setInterval(() => {
+      idx = (idx + 1) % images.length;
+      updateScreen(idx);
+    }, 2600);
+
+    // Download Counter
+    let count = parseInt(localStorage.getItem('th_dl') || '0', 10);
+    document.getElementById('dlCount').textContent = 'Downloads ' + count;
+    document.getElementById('apkDownload').addEventListener('click', () => {
+      count += 1;
+      localStorage.setItem('th_dl', count);
+      document.getElementById('dlCount').textContent = 'Downloads ' + count;
+    });
+
+    // Copy Link
+    document.getElementById('copyLink').addEventListener('click', e => {
+      e.preventDefault();
+      navigator.clipboard.writeText('https://www.upload-apk.com/tMRpXevbIM1Uz2c')
+        .then(() => alert('Download link copied to clipboard!'))
+        .catch(() => alert('Could not copy link.'));
+    });
+
+    // Mirror
+    document.getElementById('mirror').addEventListener('click', e => {
+      e.preventDefault();
+      window.open('https://www.upload-apk.com/tMRpXevbIM1Uz2c', '_blank');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
